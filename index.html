@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Aesthetic Button with Subtitles - Mobile</title>
-  <!-- Load Comic-style font -->
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <title>Aesthetic Button with Subtitles - Mobile Font Fix</title>
   <style>
+    @font-face {
+      font-family: 'ComicCustom';
+      src: url('https://fonts.gstatic.com/s/comicneue/v3/4UaHrEJCrhhnVA3DgluAx63j5pZB0B0fuWtu.woff2') format('woff2');
+      font-weight: bold;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
       background: linear-gradient(to bottom right, #ffeaf4, #e0c3fc);
@@ -14,8 +19,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Comic Neue', cursive;
-      font-weight: 700;
+      font-family: 'ComicCustom', cursive;
       position: relative;
     }
 
@@ -30,8 +34,7 @@
       cursor: pointer;
       transition: transform 0.2s, opacity 0.3s ease;
       z-index: 10;
-      font-family: 'Comic Neue', cursive;
-      font-weight: 700;
+      font-family: 'ComicCustom', cursive;
     }
 
     button:hover {
@@ -67,8 +70,7 @@
       width: 85vw;
       animation: popup-slide 0.5s ease-out forwards;
       user-select: none;
-      font-family: 'Comic Neue', cursive;
-      font-weight: 700;
+      font-family: 'ComicCustom', cursive;
       font-size: 22px;
     }
 
@@ -86,12 +88,12 @@
     #subtitle {
       margin-top: 15px;
       font-size: 20px;
-      font-weight: 700;
+      font-weight: bold;
       color: #b03c6e;
       min-height: 60px;
       word-wrap: break-word;
       line-height: 1.4;
-      font-family: 'Comic Neue', cursive;
+      font-family: 'ComicCustom', cursive;
     }
 
     .star {
@@ -179,6 +181,7 @@
     { start: 51, end: 55, text: "ty :D" },
   ];
 
+  // Button click to open popup & play audio with short delay
   button.addEventListener("click", () => {
     button.style.display = "none";
     overlay.style.display = "block";
@@ -189,6 +192,7 @@
     }, 500);
   });
 
+  // Close popup on outside click
   overlay.addEventListener("click", (e) => {
     if (!popup.contains(e.target)) {
       overlay.style.display = "none";
@@ -200,6 +204,7 @@
     }
   });
 
+  // Subtitle sync with audio
   audio.addEventListener("timeupdate", () => {
     const currentTime = audio.currentTime;
     let currentSubtitle = "";
