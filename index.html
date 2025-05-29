@@ -1,133 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Cat PC</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Aesthetic Button with Subtitles - PC Version</title>
-<style>
-  body {
-    margin: 0;
-    background: linear-gradient(to bottom right, #ffeaf4, #e0c3fc);
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    font-weight: bold;
-    position: relative;
-  }
-
-  button {
-    padding: 24px 48px;
-    font-size: 28px;
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 6px #d64f91;
-    cursor: pointer;
-    transition: transform 0.2s, opacity 0.3s ease;
-    z-index: 10;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    font-weight: bold;
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-  button:active {
-    transform: scale(0.95);
-    box-shadow: 0 3px #d64f91;
-  }
-
-  #overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    height: 100%; width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 5;
-  }
-
-  #popup {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    background: #fff0f5;
-    border: 5px dashed #ff69b4;
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.25);
-    text-align: center;
-    z-index: 10;
-    max-width: 400px;
-    width: 85vw;
-    animation: popup-slide 0.5s ease-out forwards;
-    user-select: none;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    font-weight: bold;
-    font-size: 22px;
-  }
-
-  @keyframes popup-slide {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -60%) scale(0.7);
+  <meta charset="UTF-8" />
+  <title>Aesthetic Button with Subtitles - Mobile</title>
+  <!-- Load Comic-style font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #ffeaf4, #e0c3fc);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Neue', cursive;
+      font-weight: 700;
+      position: relative;
     }
-    to {
-      opacity: 1;
+
+    button {
+      padding: 24px 48px;
+      font-size: 28px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px #d64f91;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.3s ease;
+      z-index: 10;
+      font-family: 'Comic Neue', cursive;
+      font-weight: 700;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    button:active {
+      transform: scale(0.95);
+      box-shadow: 0 3px #d64f91;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      height: 100%; width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+
+    #popup {
+      position: absolute;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%) scale(1);
+      background: #fff0f5;
+      border: 5px dashed #ff69b4;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.25);
+      text-align: center;
+      z-index: 10;
+      max-width: 400px;
+      width: 85vw;
+      animation: popup-slide 0.5s ease-out forwards;
+      user-select: none;
+      font-family: 'Comic Neue', cursive;
+      font-weight: 700;
+      font-size: 22px;
     }
-  }
 
-  #subtitle {
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #b03c6e;
-    min-height: 60px;
-    word-wrap: break-word;
-    line-height: 1.4;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-  }
+    @keyframes popup-slide {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.7);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
 
-  .star {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: twinkle 4s infinite ease-in-out;
-    filter: drop-shadow(0 0 6px white);
-    z-index: 1;
-  }
+    #subtitle {
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #b03c6e;
+      min-height: 60px;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-family: 'Comic Neue', cursive;
+    }
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.5); }
-  }
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 4s infinite ease-in-out;
+      filter: drop-shadow(0 0 6px white);
+      z-index: 1;
+    }
 
-  #funAudio {
-    margin-top: 10px;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
 
-  #funAudio.show {
-    opacity: 1;
-  }
-</style>
+    #funAudio {
+      margin-top: 10px;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #funAudio.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
@@ -219,9 +213,5 @@
   });
 </script>
 
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
