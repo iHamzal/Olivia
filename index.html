@@ -2,16 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Aesthetic Button with Subtitles - Mobile Font Fix</title>
+  <title>Aesthetic Popup by Mizo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'ComicCustom';
-      src: url('https://fonts.gstatic.com/s/comicneue/v3/4UaHrEJCrhhnVA3DgluAx63j5pZB0B0fuWtu.woff2') format('woff2');
-      font-weight: bold;
-      font-style: normal;
-      font-display: swap; /* Added this line */
-    }
-
     body {
       margin: 0;
       background: linear-gradient(to bottom right, #ffeaf4, #e0c3fc);
@@ -20,31 +13,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'ComicCustom', cursive;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
       position: relative;
     }
 
     button {
       padding: 24px 48px;
       font-size: 28px;
-      background-color: #ff69b4;
+      background: linear-gradient(135deg, #ff69b4, #ffb6c1);
       color: white;
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 6px #d64f91;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
       cursor: pointer;
-      transition: transform 0.2s, opacity 0.3s ease;
-      z-index: 10;
-      font-family: 'ComicCustom', cursive;
+      transition: transform 0.2s, box-shadow 0.3s ease;
+      font-weight: bold;
     }
 
     button:hover {
-      transform: scale(1.1);
+      transform: scale(1.07);
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.8);
     }
 
     button:active {
       transform: scale(0.95);
-      box-shadow: 0 3px #d64f91;
     }
 
     #overlay {
@@ -60,19 +52,50 @@
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%) scale(1);
-      background: #fff0f5;
-      border: 5px dashed #ff69b4;
+      background: rgba(255, 240, 245, 0.8);
+      backdrop-filter: blur(10px);
+      border: 3px solid #ff69b4;
       padding: 30px 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.25);
+      border-radius: 30px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.5);
       text-align: center;
       z-index: 10;
       max-width: 400px;
       width: 85vw;
       animation: popup-slide 0.5s ease-out forwards;
       user-select: none;
-      font-family: 'ComicCustom', cursive;
       font-size: 22px;
+      color: #b03c6e;
+    }
+
+    #popup h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #b03c6e;
+    }
+
+    #subtitle {
+      margin-top: 15px;
+      font-size: 24px;
+      color: #b03c6e;
+      min-height: 60px;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    #funAudio {
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 12px;
+      background: #ffeaf4;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #funAudio.show {
+      opacity: 1;
     }
 
     @keyframes popup-slide {
@@ -86,15 +109,10 @@
       }
     }
 
-    #subtitle {
-      margin-top: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #b03c6e;
-      min-height: 60px;
-      word-wrap: break-word;
-      line-height: 1.4;
-      font-family: 'ComicCustom', cursive;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     .star {
@@ -113,21 +131,11 @@
       0%, 100% { opacity: 0.3; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.5); }
     }
-
-    #funAudio {
-      margin-top: 10px;
-      width: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    #funAudio.show {
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
 
+<!-- Stars -->
 <script>
   for (let i = 0; i < 60; i++) {
     const star = document.createElement("div");
@@ -139,8 +147,10 @@
   }
 </script>
 
+<!-- Button -->
 <button id="funButton">Wrk Hna :)</button>
 
+<!-- Popup -->
 <div id="overlay">
   <div id="popup">
     <h2>By Mizo :3</h2>
@@ -179,7 +189,6 @@
     { start: 51, end: 55, text: "ty :D" },
   ];
 
-  // Button click to open popup & play audio with short delay
   button.addEventListener("click", () => {
     button.style.display = "none";
     overlay.style.display = "block";
@@ -190,7 +199,6 @@
     }, 500);
   });
 
-  // Close popup on outside click
   overlay.addEventListener("click", (e) => {
     if (!popup.contains(e.target)) {
       overlay.style.display = "none";
@@ -202,7 +210,6 @@
     }
   });
 
-  // Subtitle sync with audio
   audio.addEventListener("timeupdate", () => {
     const currentTime = audio.currentTime;
     let currentSubtitle = "";
