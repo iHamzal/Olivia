@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Cat PC</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Aesthetic Button with Subtitles - PC Version</title>
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(to bottom right, #ffeaf4, #e0c3fc);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-weight: bold;
+    position: relative;
+  }
+
+  button {
+    padding: 24px 48px;
+    font-size: 28px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px #d64f91;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.3s ease;
+    z-index: 10;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-weight: bold;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px #d64f91;
+  }
+
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 5;
+  }
+
+  #popup {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background: #fff0f5;
+    border: 5px dashed #ff69b4;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.25);
+    text-align: center;
+    z-index: 10;
+    max-width: 400px;
+    width: 85vw;
+    animation: popup-slide 0.5s ease-out forwards;
+    user-select: none;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  @keyframes popup-slide {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%) scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  #subtitle {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #b03c6e;
+    min-height: 60px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  }
+
+  .star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 4s infinite ease-in-out;
+    filter: drop-shadow(0 0 6px white);
+    z-index: 1;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  #funAudio {
+    margin-top: 10px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  #funAudio.show {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<script>
+  for (let i = 0; i < 60; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDelay = Math.random() * 4 + "s";
+    document.body.appendChild(star);
+  }
+</script>
+
+<!-- Button -->
+<button id="funButton">Wrk Hna :)</button>
+
+<!-- Popup -->
+<div id="overlay">
+  <div id="popup">
+    <h2>By Mizo :3</h2>
+    <audio
+      id="funAudio"
+      controls
+      src="https://www.dropbox.com/scl/fi/x5wjkxuxegh5cwh5ovra6/Kali-Uchis-telepat-a-mp3cut.net-1.mp3?rlkey=2hpbkx058ubrxo1qjzz5uwhyi&st=oglcubkf&dl=1"
+    ></audio>
+    <div id="subtitle"></div>
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById("funButton");
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popup");
+  const audio = document.getElementById("funAudio");
+  const subtitle = document.getElementById("subtitle");
+
+  const subtitles = [
+    { start: 1, end: 4, text: "De noche y de día, de noche y de día" },
+    { start: 4, end: 6, text: "You know I'm just a flight away" },
+    { start: 6, end: 9, text: "If you want it, you can take a private plane" },
+    { start: 9, end: 12, text: "A kilómetros estamos conectando" },
+    { start: 12, end: 16, text: "Y me prendes aunque no me estés tocando" },
+    { start: 16, end: 18, text: "You know I got a lot to say" },
+    { start: 18, end: 21, text: "All these voices in the background of my brain" },
+    { start: 21, end: 23.8, text: "Y me dicen todo lo que estás pensando" },
+    { start: 23.8, end: 26.5, text: "Me imagino lo que ya estás maquinando" },
+    { start: 27, end: 29, text: "Quién lo diría" },
+    { start: 30, end: 35, text: "Que se podría hacer el amor por telepatía" },
+    { start: 35, end: 38, text: "La luna está llena, mi cama vacía" },
+    { start: 38, end: 41, text: "Lo que yo te haría" },
+    { start: 41, end: 47, text: "Si te tuviera de frente, la mente te la volaría" },
+    { start: 47, end: 51, text: "De noche y de día, de noche y de día" },
+    { start: 51, end: 55, text: "ty :D" },
+  ];
+
+  button.addEventListener("click", () => {
+    button.style.display = "none";
+    overlay.style.display = "block";
+    popup.style.animation = "popup-slide 0.5s ease-out forwards";
+    setTimeout(() => {
+      audio.play();
+      audio.classList.add("show");
+    }, 500);
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (!popup.contains(e.target)) {
+      overlay.style.display = "none";
+      audio.pause();
+      audio.currentTime = 0;
+      subtitle.textContent = "";
+      button.style.display = "inline-block";
+      audio.classList.remove("show");
+    }
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    const currentTime = audio.currentTime;
+    let currentSubtitle = "";
+    for (const sub of subtitles) {
+      if (currentTime >= sub.start && currentTime < sub.end) {
+        currentSubtitle = sub.text;
+        break;
+      }
+    }
+    subtitle.textContent = currentSubtitle;
+  });
+</script>
+
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
