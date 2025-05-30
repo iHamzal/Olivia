@@ -46,6 +46,9 @@
       height: 100%; width: 100%;
       background: rgba(0, 0, 0, 0.3);
       z-index: 5;
+      /* overflow fixes for iOS */
+      touch-action: none;
+      -webkit-overflow-scrolling: touch;
     }
 
     #popup {
@@ -193,20 +196,36 @@
     button.style.display = "none";
     overlay.style.display = "block";
     popup.style.animation = "popup-slide 0.5s ease-out forwards";
-    setTimeout(() => {
-      audio.play();
-      audio.classList.add("show");
-    }, 500);
+    // Play audio immediately (iOS requires user gesture)
+    audio.currentTime = 0;
+    audio.play().catch(() => {
+      // On iOS, play() can fail if not directly user triggered, but this is as direct as possible
+    });
+    audio.classList.add("show");
   });
 
+  // DRY close popup function
+  function closePopup() {
+    overlay.style.display = "none";
+    audio.pause();
+    audio.currentTime = 0;
+    subtitle.textContent = "";
+    button.style.display = "inline-block";
+    audio.classList.remove("show");
+  }
+
+  // Mouse click for overlay close
   overlay.addEventListener("click", (e) => {
     if (!popup.contains(e.target)) {
-      overlay.style.display = "none";
-      audio.pause();
-      audio.currentTime = 0;
-      subtitle.textContent = "";
-      button.style.display = "inline-block";
-      audio.classList.remove("show");
+      closePopup();
+    }
+  });
+
+  // TOUCH event for overlay close (important for iOS Safari)
+  overlay.addEventListener("touchstart", (e) => {
+    // Only close if not touching popup itself
+    if (!popup.contains(e.target)) {
+      closePopup();
     }
   });
 
